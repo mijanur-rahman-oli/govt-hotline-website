@@ -54,3 +54,57 @@ copyNumber("copy-btn-6", "num-6");
 copyNumber("copy-btn-7", "num-7");
 copyNumber("copy-btn-8", "num-8");
 copyNumber("copy-btn-9", "num-9");
+
+
+// calling function
+
+const coinCount = document.getElementById("coin");
+const historyBox = document.getElementById("history");
+let coins = 100;
+
+function calling(callButtonId, numberId, serviceNo) {
+
+    const callBtn = document.getElementById(callButtonId);
+    const numberBtn = document.getElementById(numberId);
+    const serviceBtn = document.getElementById(serviceNo);
+
+    callBtn.addEventListener("click", function () {
+        if (coins < 20) {
+            alert("Not enough coins to make a call");
+            return;
+        }
+        const number = numberBtn.textContent.trim();
+        const service = serviceBtn.textContent.trim();
+        coins = coins - 20;
+        coinCount.textContent = coins;
+        alert(`📞Calling ${service} at ${number} `);
+
+        const li = document.createElement("li");
+        li.className = "flex justify-between items-center p-2 bg-gray-50";
+        li.innerHTML = `
+  <div class="flex flex-col">
+      <span class="break-words font-semibold ">${service}</span>
+      <span class="text-gray-500">${number}</span>
+  </div>
+
+  <span class="text-black text-md whitespace-nowrap">
+      ${new Date().toLocaleTimeString()}
+  </span>
+`;
+
+        historyBox.prepend(li);
+
+    });
+
+}
+
+
+calling("call-btn-1", "num-1", "service-1");
+calling("call-btn-2", "num-2", "service-2");
+calling("call-btn-3", "num-3", "service-3");
+calling("call-btn-4", "num-4", "service-4");
+calling("call-btn-5", "num-5", "service-5");
+calling("call-btn-6", "num-6", "service-6");
+calling("call-btn-7", "num-7", "service-7");
+calling("call-btn-8", "num-8", "service-8");
+calling("call-btn-9", "num-9", "service-9");
