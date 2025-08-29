@@ -70,7 +70,7 @@ function calling(callButtonId, numberId, serviceNo) {
 
     callBtn.addEventListener("click", function () {
         if (coins < 20) {
-            alert("Not enough coins to make a call");
+            alert("❌ Not enough coins to make a call");
             return;
         }
         const number = numberBtn.textContent.trim();
@@ -108,3 +108,10 @@ calling("call-btn-6", "num-6", "service-6");
 calling("call-btn-7", "num-7", "service-7");
 calling("call-btn-8", "num-8", "service-8");
 calling("call-btn-9", "num-9", "service-9");
+
+
+// history clear
+
+document.getElementById("clear-history-btn").addEventListener("click", function () {
+    historyBox.innerHTML = "";
+});
